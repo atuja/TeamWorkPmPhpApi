@@ -5,29 +5,29 @@ class Message extends Model
 
     protected function init()
     {
-        $this->fields = [
+        $this->fields = array(
             'title'                    => true,
-            'category_id'              => [
+            'category_id'              => array(
                 'required'=>true,
-                'attributes'=>[
+                'attributes'=>array(
                     'type'=>'integer'
-                ]
-            ],
-            'notify'                   => [
+                )
+            ),
+            'notify'                   => array(
                 'required'=>false,
-                'attributes'=>['type'=>'array'],
+                'attributes'=>array('type'=>'array'),
                 'element'=>'person'
-            ],
-            'private'                  => [
+            ),
+            'private'                  => array(
                 'required'=>false,
-                'attributes'=>[
+                'attributes'=>array(
                     'type'=>'boolean'
-                ]
-            ],
+                )
+            ),
             'body'                     => true,
             'attachments'              => false,
             'pending_file_attachments' => false
-        ];
+        );
         $this->parent = 'post';
         $this->action = 'posts';
     }

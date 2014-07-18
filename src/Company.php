@@ -4,16 +4,16 @@ class Company extends Model
 {
     protected function init()
     {
-        $this->fields = [
+        $this->fields = array(
             'name'=>true,
             'address_one'=>false,
             'address_two'=>false,
             'zip'=>false,
             'city'=>false,
             'state'=>false,
-            'countrycode'=>[
+            'countrycode'=>array(
                 'required'=> false,
-                'validate'=> [
+                'validate'=> array(
                     'A2',
                     'AD',
                     'AE',
@@ -244,12 +244,12 @@ class Company extends Model
                     'ZA',
                     'ZM',
                     'ZW'
-                ]
-            ],
+                )
+            ),
             'phone'=>false,
             'fax'=>false,
             'web_address'=>false
-        ];
+        );
     }
 
 

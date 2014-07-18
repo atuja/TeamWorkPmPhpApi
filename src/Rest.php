@@ -55,9 +55,9 @@ final class Rest
     {
         $url = 'http://'. $this->company . '.teamworkpm.net/'. $action .
                                                         '.' . self::$FORMAT;
-        $headers = ['Authorization: BASIC '. base64_encode(
+        $headers = array('Authorization: BASIC '. base64_encode(
             $this->key . ':xxx'
-        )];
+        ));
         $request = $this->request
                         ->setAction($action)
                         ->getParameters($method, $request);
@@ -69,10 +69,10 @@ final class Rest
                 }
                 break;
             case 'UPLOAD':
-                curl_setopt_array( $ch, [
+                curl_setopt_array( $ch, array(
                     CURLOPT_POST       => true,
                     CURLOPT_POSTFIELDS => $request
-                ]);
+                ));
                 break;
             case 'DELETE':
                 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
@@ -87,20 +87,20 @@ final class Rest
                 if ($request) {
                     curl_setopt( $ch, CURLOPT_POSTFIELDS, $request);
                 }
-                $headers = array_merge($headers, [
+                $headers = array_merge($headers, array(
                     'Content-Type: application/' . self::$FORMAT,
                     'Content-Length:' . strlen($request)
-                ]);
+                ));
                 break;
         }
-        curl_setopt_array($ch, [
+        curl_setopt_array($ch, array(
             CURLOPT_HTTPHEADER     => $headers,
             CURLOPT_URL            => $url,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HEADER         => true,
             CURLOPT_SSL_VERIFYHOST => false,
             CURLOPT_SSL_VERIFYPEER => false
-        ]);
+        ));
 
         $i = 0;
         while ($i < 5) {
@@ -181,7 +181,7 @@ final class Rest
     public static function setFormat($value)
     {
 
-        static $format = ['json', 'xml'];
+        static $format = array('json', 'xml');
         $value = strtolower($value);
         if (in_array($value, $format)) {
             self::$FORMAT = $value;
@@ -190,7 +190,7 @@ final class Rest
 
     private function parseHeaders($stringHeaders)
     {
-        $headers = [];
+        $headers = array();
         $stringHeaders = trim($stringHeaders);
         if ($stringHeaders) {
             $parts = explode("\n", $stringHeaders);
@@ -205,7 +205,7 @@ final class Rest
                             $headers[$name][] = $value;
                         } else {
                             $_val = $headers[$name];
-                            $headers[$name] = [$_val, $value];
+                            $headers[$name] = array($_val, $value);
                         }
                     } else {
                         $headers[$name] = $value;

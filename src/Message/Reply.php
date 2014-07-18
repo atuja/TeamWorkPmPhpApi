@@ -4,14 +4,14 @@ class Reply extends \TeamWorkPm\Model
 {
     public function init()
     {
-        $this->fields = [
+        $this->fields = array(
             'body'=>true,
-            'notify'=>[
+            'notify'=>array(
                 'required'=>false,
-                'attributes'=>['type'=>'array'],
+                'attributes'=>array('type'=>'array'),
                 'element'=>'person'
-            ],
-        ];
+            ),
+        );
         $this->parent = 'messagereply';
         $this->action = 'messageReplies';
     }
@@ -34,13 +34,13 @@ class Reply extends \TeamWorkPm\Model
      * @param <type> $params
      * @return TeamWorkPm\Response\Model
      */
-    public function getByMessage($message_id, array $params = [])
+    public function getByMessage($message_id, array $params = array())
     {
         $message_id = (int) $message_id;
         if ($message_id <= 0) {
             throw new \TeamWorkPm\Exception('Invalid param message_id');
         }
-        $validate = ['page', 'pagesize'];
+        $validate = array('page', 'pagesize');
         foreach ($params as $name=>$value) {
             if (!in_array(strtolower($name), $validate)) {
                 unset ($params[$name]);

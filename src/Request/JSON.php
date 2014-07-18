@@ -43,7 +43,7 @@ class JSON extends Model
                         if (is_string($value)) {
                             $value = mb_encode_numericentity(
                                 $value,
-                                [0x80, 0xffff, 0, 0xffff],
+                                array(0x80, 0xffff, 0, 0xffff),
                                 'utf-8'
                             );
                         }
@@ -56,7 +56,7 @@ class JSON extends Model
             $parameters =  json_encode($object);
             $parameters = mb_decode_numericentity(
                 $parameters,
-                [0x80, 0xffff, 0, 0xffff],
+                array(0x80, 0xffff, 0, 0xffff),
                 'utf-8'
             );
         } else {

@@ -4,45 +4,45 @@ class Project extends Model
 {
     protected function init()
     {
-        $this->fields = [
+        $this->fields = array(
             // New Project Name
             'name'        => true,
             // [Optional. Project Description]
             'description' =>  false,
             // [Optional. Start date in yyyymmdd format]
-            'start_date'  => [
+            'start_date'  => array(
                 'required'=> false,
-                'attributes' => [
+                'attributes' => array(
                     'type'=>'integer'
-                ]
-            ],
+                )
+            ),
             // [Optional. End date in yyyymmdd format]
-            'end_date'    => [
+            'end_date'    => array(
                 'required' => false,
-                'attributes' => [
+                'attributes' => array(
                     'type'=>'integer'
-                ]
-            ],
+                )
+            ),
             // [Optional. Id of company to assign the project to]
-            'company_id'  => [
+            'company_id'  => array(
                 'required' => false,
-                'attributes' => [
+                'attributes' => array(
                     'type' => 'integer'
-                ]
-            ],
+                )
+            ),
             // [Optional. Name of a new company to assign the project to]
             'new_company'    => false,
             //[Optional. Numeric ID of project category, 0 = no category]
             'category_id'     => false,
 
-            'notifyeveryone' => [
+            'notifyeveryone' => array(
                 'required' => false,
-                'attributes' => [
+                'attributes' => array(
                     'type'=>'boolean'
-                ]
-            ],
+                )
+            ),
             'status'         => false
-        ];
+        );
     }
 
     /**
@@ -65,7 +65,7 @@ class Project extends Model
      * @param type $time
      * @return TeamWorkPm\Response\Model
      */
-    public function getActive(array $params = [])
+    public function getActive(array $params = array())
     {
         return $this->getByStatus('active', $params);
     }
@@ -76,7 +76,7 @@ class Project extends Model
      * @param type $time
      * @return TeamWorkPm\Response\Model
      */
-    public function getArchived(array $params = [])
+    public function getArchived(array $params = array())
     {
         return $this->getByStatus('archived', $params);
     }
@@ -144,7 +144,7 @@ class Project extends Model
         if ($id <= 0) {
             throw new Exception('Invalid param id');
         }
-        $data = [];
+        $data = array();
         $data['id'] = $id;
         $data['status'] = 'active';
         return $this->update($data);
@@ -162,7 +162,7 @@ class Project extends Model
         if ($id <= 0) {
             throw new Exception('Invalid param id');
         }
-        $data = [];
+        $data = array();
         $data['id'] = $id;
         $data['status'] = 'archived';
         return $this->update($data);

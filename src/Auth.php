@@ -2,10 +2,10 @@
 
 class Auth
 {
-    private static $_config = [
+    private static $_config = array(
         'company' => null,
         'key'     => null
-    ];
+    );
 
     public static function set()
     {

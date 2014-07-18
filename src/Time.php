@@ -4,27 +4,27 @@ class Time extends Model
 {
     protected function init()
     {
-        $this->fields = [
+        $this->fields = array(
             'description' => true,
             'person_id'   => true,
-            'date'=>[
+            'date'=>array(
                 'required' => true,
                 'type'     => 'integer',
                 'length'   => 6
-            ],
-            'hours' => [
+            ),
+            'hours' => array(
                 'required' => true,
                 'type'     => 'integer',
                 'length'   => 3
-            ],
-            'minutes'=>[
+            ),
+            'minutes'=>array(
                 'required' => false,
                 'type'     => 'integer',
                 'length'   => 2
-            ],
+            ),
             'time'=>true,
             'isbillable'=>false
-        ];
+        );
         $this->parent = 'time-entry';
         //$this->action = 'time_entries';
     }
@@ -66,7 +66,7 @@ class Time extends Model
      * @return TeamWorkPm\Response\Model
      */
 
-    public function getAll(array $params = [])
+    public function getAll(array $params = array())
     {
         return $this->rest->get("$this->action", $params);
     }
@@ -85,7 +85,7 @@ class Time extends Model
      * @param array $params
      * @return TeamWorkPm\Response\Model
      */
-    public function getByProject($project_id, array $params = [])
+    public function getByProject($project_id, array $params = array())
     {
         $project_id = (int) $project_id;
         if ($project_id <= 0) {

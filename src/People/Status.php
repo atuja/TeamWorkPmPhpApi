@@ -6,10 +6,10 @@ class Status extends \TeamWorkPm\Rest\Model
     {
         $this->parent = 'userstatus';
         $this->action = 'status';
-        $this->fields = [
+        $this->fields = array(
           'status'=>true,
           'notify'=>false
-        ];
+        );
     }
 
     /**

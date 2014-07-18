@@ -5,7 +5,7 @@ class People extends Model
 
     protected function init()
     {
-        $this->fields = [
+        $this->fields = array(
             'first_name' => true,
             'last_name' => true,
             'email_address'=>true,
@@ -19,9 +19,9 @@ class People extends Model
             'phone_number_fax'=>false,
             'phone_number_home'=>false,
             'im_handle'=>false,
-            'im_service'=>[
+            'im_service'=>array(
                 'required'=>false,
-                'validate'=>[
+                'validate'=>array(
                     'GTalk',
                     'AOL',
                     'ICQ',
@@ -30,40 +30,40 @@ class People extends Model
                     'Yahoo',
                     'Skype',
                     'Twitter'
-                ]
-            ],
-            'date_format'=>[
+                )
+            ),
+            'date_format'=>array(
                 'required'=>false,
-                'validate'=>[
+                'validate'=>array(
                     'dd.mm.yyyy',
                     'dd/mm/yyyy',
                     'mm.dd.yyyy',
                     'mm/dd/yyyy',
                     'yyyy-mm-dd',
                     'yyyy.mm.dd'
-                ]
-            ],
-            'send_welcome_email'=>[
+                )
+            ),
+            'send_welcome_email'=>array(
                 'required'=>false,
                 'type'=>'boolean'
-            ],
-            'receive_daily_reports'=>[
+            ),
+            'receive_daily_reports'=>array(
                 'required'=>false,
                 'type'=>'boolean'
-            ],
+            ),
             'welcome_email_message'=>false,
-            'auto_give_project_access'=>[
+            'auto_give_project_access'=> array(
                 'required'=>false,
                 'type'=>'boolean'
-            ],
+            ),
             'open_id'=>false,
-            'notes'=>[
+            'notes'=>array(
                 'required'=>false,
                 'type'=>'boolean'
-            ],
-            'user_language'=>[
+            ),
+            'user_language'=>array(
                 'required'=>false,
-                'validate'=>[
+                'validate'=>array(
                     'EN',
                     'FR',
                     'AR',
@@ -88,14 +88,14 @@ class People extends Model
                     'RU',
                     'ES',
                     'SV'
-                ]
-            ],
+                )
+            ),
             'administrator'=>false,
-            'can_add_projects'=>[
+            'can_add_projects'=>array(
                 'required'=>false,
                 'type'=>'boolean'
-            ]
-        ];
+            )
+        );
         $this->parent = 'person';
         $this->action = 'people';
     }

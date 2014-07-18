@@ -3,14 +3,14 @@
 class Exception extends \ErrorException
 {
     private $response = null;
-    private $headers = [];
+    private $headers = array();
 
 
     public function  __construct($errorInfo)
     {
         if (!is_array($errorInfo)) {
             $message              = $errorInfo;
-            $errorInfo = [];
+            $errorInfo = array();
             $errorInfo['Message'] = $message;
         }
         $this->message = trim($errorInfo['Message']);

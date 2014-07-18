@@ -64,7 +64,7 @@ class JSON extends Model
                             !$source
                         ) {
 
-                            $source = [];
+                            $source = array();
                         }
                         $this->headers = $headers;
                         $this->string = json_encode($source);
@@ -84,11 +84,11 @@ class JSON extends Model
             }
         }
 
-        throw new \TeamWorkPm\Exception([
+        throw new \TeamWorkPm\Exception(array(
             'Message'  => $errors,
             'Response' => $data,
             'Headers'  => $headers
-        ]);
+        ));
     }
 
     protected function getContent()

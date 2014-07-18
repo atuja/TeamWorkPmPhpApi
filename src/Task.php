@@ -4,54 +4,75 @@ class Task extends Model
 {
     protected function init()
     {
-        $this->fields = [
+        $this->fields = array(
             'content'=>true,
-            'notify'=>[
+            'notify'=>array(
                 'required'=>false,
-                'attributes'=>[
+                'attributes'=>array(
                     'type'=>'boolean'
-                ]
-            ],
+                )
+            ),
             'description'=>false,
-            'due_date'=>[
+            'due_date'=>array(
                 'required'=>false,
-                'attributes'=>[
+                'attributes'=>array(
                     'type'=>'integer'
-                ]
-            ],
-            'start_date'=>[
+                )
+            ),
+            'start_date'=>array(
                 'required'=>false,
-                'attributes'=>[
+                'attributes'=>array(
                     'type'=>'integer'
-                ]
-            ],
-            'private'=>[
+                )
+            ),
+            'private'=>array(
                 'required'=>false,
-                'attributes'=>[
+                'attributes'=>array(
                     'type'=>'boolean'
-                ]
-            ],
-            'priority'=>[
+                )
+            ),
+            'priority'=>array(
                 'required'=>false,
-                'validate'=>[
+                'validate'=>array(
                     'low',
                     'medium',
                     'high'
-                ]
-            ],
-            'estimated_minutes'=>[
+                )
+            ),
+            'estimated_minutes'=>array(
                 'required'=>false,
-                'attributes'=>[
+                'attributes'=>array(
                     'type'=>'integer'
-                ]
-            ],
+                )
+            ),
             'responsible_party_id'     => false,
             'attachments'              => false,
             'pending_file_attachments' => false
-        ];
+        );
         $this->parent = 'todo-item';
         $this->action = 'todo_items';
-   }
+    }
+
+    public function getAll($params = null)
+    {
+	return $this->rest->get("tasks", $params);
+    }
+
+
+    /**
+     * Update task
+     * @param array $data
+     * @return bool
+     */
+    public function update(array $data)
+    {
+	$id = empty($data['id']) ? 0: (int) $data['id'];
+        if ($id <= 0) {
+	    throw new Exception('Required field id');
+	}    
+	return $this->rest->put("tasks/$id", $data);
+    }
+
 
     public function get($id, $get_time = false)
     {
@@ -59,7 +80,7 @@ class Task extends Model
         if ($id <= 0) {
             throw new Exception('Invalid param id');
         }
-        $params = [];
+        $params = array();
         if ($get_time) {
             $params['getTime'] = (int) $get_time;
         }
@@ -91,11 +112,11 @@ class Task extends Model
         if ($task_list_id <= 0) {
             throw new Exception('Invalid param task_list_id');
         }
-        $params = [
+        $params = array(
             'filter'=> $filter
-        ];
+        );
         $filter = strtolower($filter);
-        $validate = ['all', 'pending', 'upcoming','late','today','finished'];
+        $validate = array('all', 'pending', 'upcoming','late','today','finished');
         if (in_array($filter, $validate)) {
             $params['filter'] = 'all';
         }

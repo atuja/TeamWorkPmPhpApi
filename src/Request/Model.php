@@ -7,7 +7,7 @@ abstract class Model
     protected $method = null;
     protected $action = null;
     protected $parent = null;
-    protected $fields = [];
+    protected $fields = array();
 
     public function setParent($parent)
     {
@@ -30,7 +30,7 @@ abstract class Model
     protected function getValue(& $field, & $options, array $parameters)
     {
         static
-            $camelize = [
+            $camelize = array(
                 'pending_file_attachments' => true,
                 'date_format'              => true,
                 'send_welcome_email'       => true,
@@ -41,21 +41,21 @@ abstract class Model
                 'user_language'            => true,
                 'pending_file_ref'         => true,
                 'new_company'              => true
-            ],
-            $yes_no_boolean = [
+            ),
+            $yes_no_boolean = array(
                 'welcome_email_message',
                 'send_welcome_email',
                 'receive_daily_reports',
                 'notes',
                 'auto_give_project_access'
-            ],
-            $preserve = [
+            ),
+            $preserve = array(
                 'address_one' => true,
                 'address_two' => true
-            ];
+            );
         $value = isset($parameters[$field]) ? $parameters[$field] : null;
         if (!is_array($options)) {
-            $options = ['required'=>$options, 'attributes'=> []];
+            $options = array('required'=>$options, 'attributes'=> array());
         }
         $isNull =  null === $value;
         //verficando campos requeridos

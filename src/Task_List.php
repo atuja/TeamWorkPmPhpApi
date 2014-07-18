@@ -4,35 +4,35 @@ class Task_List extends Model
 {
     protected function init()
     {
-        $this->fields = [
+        $this->fields = array(
             'name'   => true,
-            'private' => [
+            'private' => array(
                 'required'=>false,
-                'attributes'=>[
+                'attributes'=>array(
                     'type'=>'boolean'
-                ]
-            ],
-            'pinned'   =>[
+                )
+            ),
+            'pinned'   =>array(
                 'required'=>false,
-                'attributes'=>[
+                'attributes'=>array(
                     'type'=>'boolean'
-                ]
-            ],
-            'tracked' => [
+                )
+            ),
+            'tracked' => array(
                 'required'=>false,
-                'attributes'=>[
+                'attributes'=>array(
                     'type'=>'boolean'
-                ]
-            ],
+                )
+            ),
             'description'           => false,
-            'milestone_id'          => [
+            'milestone_id'          => array(
                 'required'=>false,
-                'attributes'=>[
+                'attributes'=>array(
                     'type'=>'integer'
-                ]
-            ],
+                )
+            ),
             'todo_list_template_id' => false
-        ];
+        );
         $this->parent = 'todo-list';
         $this->action = 'todo_lists';
     }
@@ -51,7 +51,7 @@ class Task_List extends Model
         if ($id <= 0) {
             throw new Exception('Invalid param id');
         }
-        $params = [];
+        $params = array();
         if (!$show_tasks) {
             $params['showTasks'] = 'no';
         }
@@ -90,12 +90,12 @@ class Task_List extends Model
             throw new Exception('Invalid param project_id');
         }
         if ($params && is_string($params)) {
-            $status = ['active','completed'];
-            $filter = ['upcoming','late','today','tomorrow'];
+            $status = array('active','completed');
+            $filter = array('upcoming','late','today','tomorrow');
             if (in_array($params, $status)) {
-                $params = ['status'=> $params];
+                $params = array('status'=> $params);
             } elseif (in_array($params, $filter)) {
-                $params = ['filter'=> $params];
+                $params = array('filter'=> $params);
             } else {
                 $params = null;
             }

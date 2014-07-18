@@ -7,7 +7,7 @@ abstract class Model
      * creanda en el projecto
      * @var array
      */
-    private static $instances = [];
+    private static $instances = array();
 
     /**
      * Es una instancia a la clase que maneja
@@ -31,7 +31,7 @@ abstract class Model
      * Almacena los campos del objeto
      * @var array
      */
-    protected $fields = [];
+    protected $fields = array();
     /**
      *
      * @var string
@@ -43,8 +43,8 @@ abstract class Model
         $this->rest   = new \TeamWorkPm\Rest($company, $key);
         $this->hash   = $hash;
         $this->parent = strtolower(str_replace(
-          ['TeamWorkPm\\', '\\'],
-          ['', '-'],
+          array('TeamWorkPm\\', '\\'),
+          array('', '-'),
           $class
         ));
         if (method_exists($this, 'init')) {
