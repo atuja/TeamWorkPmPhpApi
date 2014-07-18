@@ -51,7 +51,7 @@ class JSON extends Model
                         }
                         if ($headers['X-Action'] === 'links' ||
                                         $headers['X-Action'] === 'notebooks') {
-                            $_source = [];
+                            $_source = array();
                             $wrapper = $headers['X-Action'];
                             foreach ($source as $project) {
                                 foreach ($project->$wrapper as $object) {
